@@ -1,0 +1,8 @@
+---
+
+- name: Microk8s token generator
+  shell: microk8s.add-node
+  register: output
+
+- name: Gurardando los logs con el comando join.
+  local_action: copy content={{ output.stdout }} dest={{ join_token_file }}

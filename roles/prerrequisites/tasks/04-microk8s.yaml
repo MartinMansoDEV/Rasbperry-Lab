@@ -1,0 +1,22 @@
+---
+
+- name: Enable c-groups
+  shell: sed -i '1s/^/cgroup_enable=memory cgroup_memory=1 /' /boot/firmware/cmdline.txt
+  run_once: true
+
+- name: Reboot System
+  reboot:
+
+- name: Install Microk8s
+  snap:
+    name: microk8s
+    classic: yes
+    
+- name: Start Microk8s
+  shell: |
+    microk8s.start
+    microk8s.enable dns
+
+- name: Set microk8s.kubectl as alias
+  shell: snap alias microk8s.kubectl kubectl
+

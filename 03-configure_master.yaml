@@ -1,0 +1,9 @@
+---
+
+- name: Configurando el nodo master
+  hosts: master
+  vars_files:
+    - "./env_vars.yaml"
+  become: yes
+  roles:
+    - master

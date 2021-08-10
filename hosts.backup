@@ -1,0 +1,14 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+ansible_user=ansible
+
+[master]
+kubemaster.manand.lab private_ip=<private_ip>
+
+[workers]
+kubenode1.manand.lab private_ip=<private_ip>
+kubenode2.manand.lab private_ip=<private_ip>
+
+[nfs]
+kubemaster.manand.lab private_ip=<private_ip>

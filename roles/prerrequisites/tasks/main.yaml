@@ -1,0 +1,8 @@
+---
+
+- include_tasks: 01-swap.yaml
+- include_tasks: 02-set-hosts.yaml
+- include_tasks: 03-docker.yaml
+- include_tasks: 04-microk8s.yaml
+- include_tasks: 07-set-time.yaml
+- include_tasks: 08-nfs-utils.yaml

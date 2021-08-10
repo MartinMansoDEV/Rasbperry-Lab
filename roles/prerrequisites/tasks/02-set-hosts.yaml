@@ -1,0 +1,10 @@
+---
+
+- name: Añadir al archivo /etc/hosts todas las ips para que haya resolución
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '.*{{ item }}$'
+    line: "{{ hostvars[item].private_ip }} {{item}}"
+    state: present
+  when: hostvars[item].private_ip is defined
+  with_items: "{{ groups.all }}"

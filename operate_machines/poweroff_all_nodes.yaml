@@ -1,0 +1,9 @@
+---
+
+- name: Apagar todos los nodos
+  hosts:
+    - all
+  become: yes
+  tasks:
+    - name: Apagando
+      shell: poweroff

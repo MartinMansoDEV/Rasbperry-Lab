@@ -1,0 +1,7 @@
+---
+
+- name: Instalando software nfs client
+  apt: 
+    name:
+      - nfs-common
+    state: present

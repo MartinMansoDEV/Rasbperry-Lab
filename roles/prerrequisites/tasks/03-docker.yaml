@@ -1,0 +1,35 @@
+---
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+
+- name: Install Docker Engine.
+  apt: 
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+ 
+- name: Enable service docker, and enable persistently
+  service: 
+    name: docker
+    enabled: yes
+
+- name: Creating docker-daemon file
+  file:
+    path: /etc/docker/daemon.json
+    state: touch
+
+- name: Set docker daemon info
+  blockinfile: 
+    path: /etc/docker/daemon.json
+    block: |
+    { "insecure-registries" : ["localhost:32000"] }

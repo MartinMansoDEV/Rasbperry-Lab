@@ -1,0 +1,8 @@
+cluster_cidr: 192.168.0.0/16
+
+join_token_file: kube_token
+
+nfs_apps:
+- nfs-utils
+- net-tools
+- nfs4-acl-tools

@@ -1,0 +1,12 @@
+---
+
+- name: Crear directorio nfs
+  file:
+    path: /srv/nfs
+    state: directory
+
+- name: Crear directorio para contener la aplicacion en nfs
+  file:
+    path: "{{ nfs_path_app }}"
+    state: directory
+    mode: 0755

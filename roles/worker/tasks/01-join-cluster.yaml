@@ -1,0 +1,8 @@
+---
+- name: Copiar token para nodos worker
+  copy: src={{ join_token_file }} dest=kube_token
+
+- name: Unir nodo al cluster
+  shell: |
+    sed -n 2p kube_token > initToken.sh
+    sh initToken.sh

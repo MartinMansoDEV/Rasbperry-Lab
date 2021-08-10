@@ -1,0 +1,8 @@
+---
+
+- name: Instalando software para nfs
+  shell: apt install nfs-kernel-server -y
+- name: Activar servidor nfs
+  shell: |
+    systemctl  enable nfs-server
+    systemctl  start nfs-server

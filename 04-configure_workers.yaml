@@ -1,0 +1,9 @@
+---
+
+- name: Configurando nodos worker
+  hosts: workers
+  vars_files:
+    - "./env_vars.yaml"
+  become: yes
+  roles:
+    - worker

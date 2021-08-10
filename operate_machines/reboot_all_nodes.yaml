@@ -1,0 +1,9 @@
+---
+
+- name: Reiniciando todos los nodos
+  hosts:
+    - all
+  become: yes
+  tasks:
+    - name: Reiniciando
+      reboot:
