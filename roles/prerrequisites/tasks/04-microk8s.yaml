@@ -1,12 +1,5 @@
 ---
 
-- name: Enable c-groups
-  shell: sed -i '1s/^/cgroup_enable=memory cgroup_memory=1 /' /boot/firmware/cmdline.txt
-  run_once: true
-
-- name: Reboot System
-  reboot:
-
 - name: Install Microk8s
   snap:
     name: microk8s

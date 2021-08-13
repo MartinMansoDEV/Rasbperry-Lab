@@ -7,3 +7,5 @@
   tasks:
     - name: Reiniciando
       reboot:
+    - name: Reiniciar Microk8s
+      shell: microk8s.start
