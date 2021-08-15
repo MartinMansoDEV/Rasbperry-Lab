@@ -1,8 +1,21 @@
 ---
 
-- name: Microk8s token generator
-  shell: microk8s.add-node
+- name: Descargando las imagenes necesarias para kubernetes
+  shell: kubeadm config images pull
+  
+# - name: Resetting kubeadm
+#   shell: kubeadm reset -f
+
+- name: Inicializar el cluster de kubernetes
+  shell: kubeadm init --pod-network-cidr={{cluster_cidr}}
   register: output
 
 - name: Gurardando los logs con el comando join.
   local_action: copy content={{ output.stdout }} dest={{ join_token_file }}
+  become: False
+
+- name: Copiando los archivos necesarios de kubernetes
+  shell: |
+    mkdir -p $HOME/.kube
+    sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config

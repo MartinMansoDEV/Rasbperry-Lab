@@ -1,0 +1,6 @@
+---
+- name: Instalando kube-fannel.yml
+  command: kubectl apply -f https://docs.projectcalico.org/v3.16/manifests/calico.yaml
+
+- name: Instlando haproxy-ingress.yaml
+  command: kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
